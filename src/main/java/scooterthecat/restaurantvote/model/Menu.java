@@ -9,4 +9,5 @@ public class Menu extends BaseEntity{
     private Date date;
     List<Meal> meals;
     Restaurant restaurant;
+
 }
