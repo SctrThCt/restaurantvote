@@ -1,8 +1,15 @@
 package scooterthecat.restaurantvote.model;
 
-public class User extends BaseEntity {
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
-    String email;
-    String password;
-    Role role;
+public class User extends BaseNamedEntity {
+
+    private String email;
+    private String password;
+    private Role role;
+    private Date registered;
+    private Set<Role> roles;
+    private List<Vote> votes;
 }

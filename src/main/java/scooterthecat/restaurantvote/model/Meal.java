@@ -1,6 +1,9 @@
 package scooterthecat.restaurantvote.model;
 
-public class Meal extends BaseEntity {
+import java.time.LocalDate;
+public class Meal extends BaseNamedEntity {
 
+    private int price;
+    private String name;
 
 }

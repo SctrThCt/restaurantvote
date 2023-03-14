@@ -1,4 +1,9 @@
 package scooterthecat.restaurantvote.model;
 
-public class Restaurant extends BaseEntity {
+import java.util.List;
+import java.util.Set;
+
+public class Restaurant extends BaseNamedEntity {
+    Menu menu;
+    List<Vote> votes;
 }
