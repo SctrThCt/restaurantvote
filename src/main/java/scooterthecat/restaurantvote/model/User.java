@@ -1,4 +1,8 @@
 package scooterthecat.restaurantvote.model;
 
-public class User extends BaseNamedEntity{
+public class User extends BaseEntity {
+
+    String email;
+    String password;
+    Role role;
 }

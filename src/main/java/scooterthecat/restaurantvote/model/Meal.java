@@ -1,4 +1,6 @@
 package scooterthecat.restaurantvote.model;
 
-public class Menu extends BaseEntity{
+public class Meal extends BaseEntity {
+
+
 }
