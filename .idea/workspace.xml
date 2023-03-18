@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44e49a30-03fa-4681-b399-aba7061dd5f1" name="Changes" comment="added dependencies">
-      <change afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseNamedEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Vote.java" afterDir="false" />
+    <list default="true" id="44e49a30-03fa-4681-b399-aba7061dd5f1" name="Changes" comment="created model layer">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseNamedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseNamedEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Meal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Meal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Restaurant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Restaurant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Vote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Vote.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +47,8 @@
     "last_opened_file_path": "C:/Projects/restaurantvote",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "42ba5e70b5be66a0a37df1fe8ecb2c99"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -63,7 +65,9 @@
       <option name="presentableId" value="Default" />
       <updated>1678432223159</updated>
       <workItem from="1678432224661" duration="1861000" />
-      <workItem from="1678788444452" duration="4472000" />
+      <workItem from="1678788444452" duration="6094000" />
+      <workItem from="1678850182663" duration="14000" />
+      <workItem from="1679133519990" duration="4667000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1678432688107</created>
@@ -86,7 +90,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678790863064</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="created model layer">
+      <created>1678793396452</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678793396452</updated>
+    </task>
+    <task id="LOCAL-00005" summary="created model layer">
+      <created>1678798636068</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678798636068</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +124,22 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first push" />
     <MESSAGE value="added dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dependencies" />
+    <MESSAGE value="created model layer" />
+    <option name="LAST_COMMIT_MESSAGE" value="created model layer" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseEntity.java</url>
+          <line>44</line>
+          <properties class="scooterthecat.restaurantvote.model.BaseEntity" method="equals">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

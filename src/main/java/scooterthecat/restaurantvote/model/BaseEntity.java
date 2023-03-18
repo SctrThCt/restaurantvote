@@ -2,12 +2,11 @@ package scooterthecat.restaurantvote.model;
 
 import org.hibernate.Hibernate;
 import org.springframework.data.domain.Persistable;
+import org.springframework.util.Assert;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
+@MappedSuperclass
 public abstract class BaseEntity implements Persistable<Integer> {
     public static final int START_SEQ = 100000;
 
@@ -16,9 +15,20 @@ public abstract class BaseEntity implements Persistable<Integer> {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
     protected Integer id;
 
+    protected BaseEntity()
+    {}
+
+    protected BaseEntity(int id)
+    {
+    this.id = id;
+    }
     @Override
     public Integer getId() {
         return id;
+    }
+    public void setId(int id)
+    {
+        this.id=id;
     }
 
     @Override
@@ -41,6 +51,11 @@ public abstract class BaseEntity implements Persistable<Integer> {
         }
         BaseEntity that = (BaseEntity) o;
         return id != null && id.equals(that.id);
+    }
+
+    public int id() {
+        Assert.notNull(id, "Entity must have id");
+        return id;
     }
 
     @Override
