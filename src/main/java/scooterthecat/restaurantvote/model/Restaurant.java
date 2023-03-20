@@ -8,8 +8,8 @@ import java.util.Set;
 @Entity
 @Table(name = "restaurant")
 public class Restaurant extends BaseNamedEntity {
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     List<Menu> menu;
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     List<Vote> votes;
 }

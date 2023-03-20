@@ -11,10 +11,12 @@ public class Menu extends BaseEntity{
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "meal")
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "meal_id")
     private List<Meal> meals;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
     public Date getDate() {

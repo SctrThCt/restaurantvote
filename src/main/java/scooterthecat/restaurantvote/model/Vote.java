@@ -1,19 +1,25 @@
 package scooterthecat.restaurantvote.model;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
 @Table(name = "vote")
 public class Vote extends BaseEntity{
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
-    private LocalDate date;
-    @ManyToOne
+
+    @Column(name = "dateTime")
+    private LocalDateTime date;
+
+    @Column(name = "changed")
+    private boolean isChanged = false;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 }
