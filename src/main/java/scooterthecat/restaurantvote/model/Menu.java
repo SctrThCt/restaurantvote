@@ -3,16 +3,18 @@ package scooterthecat.restaurantvote.model;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 @Entity
-@Table(name = "menu")
+@Table(name = "menu",uniqueConstraints = {@UniqueConstraint(columnNames = {"date", "restaurant_id"}, name = "one_menu_for_restaurant_per_day")})
 public class Menu extends BaseEntity{
 
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "meal_id")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "menu_meal",
+            joinColumns = @JoinColumn(name = "menu_id"),
+            inverseJoinColumns = @JoinColumn(name = "meal_id"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"menu_id", "meal_id"}, name = "unique_meal_for_menu")})
     private List<Meal> meals;
 
     @ManyToOne(fetch = FetchType.LAZY)

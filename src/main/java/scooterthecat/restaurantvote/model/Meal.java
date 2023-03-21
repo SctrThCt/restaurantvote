@@ -1,17 +1,16 @@
 package scooterthecat.restaurantvote.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
-@Table(name = "meal")
+@Table(name = "meal", uniqueConstraints = {@UniqueConstraint( columnNames = {"name", "price"},name = "uniq_name_price")})
+
 public class Meal extends BaseNamedEntity {
 
     @Column(name = "price")
-    @Positive
     private Integer price;
 
     public Meal()
