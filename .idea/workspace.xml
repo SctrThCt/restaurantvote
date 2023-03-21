@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44e49a30-03fa-4681-b399-aba7061dd5f1" name="Changes" comment="Добавлены классы репозиториев, расширен маппинг энтити, сгенерированы корректные таблицы на основе аннтоаций. Нужно добавить ограничения.">
+    <list default="true" id="44e49a30-03fa-4681-b399-aba7061dd5f1" name="Changes" comment="Добавил ограничения, нужно будет тестить">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Meal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Meal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Vote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Vote.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/initDB.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/initDB_hsql.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/populateDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/populateDB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/tomcat.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/tomcat.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-db.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-db.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,34 +40,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Projects/restaurantvote/src/main/resources&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;b50e0d1b963433b5be2fb6d183eba252&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Projects/restaurantvote/src/main/resources",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "b50e0d1b963433b5be2fb6d183eba252"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ],
+    "RunConfigurationTargetLRU": [
+      "a36cdffc-e757-4b86-9a1d-cc7d43db9e31/database/\"testvote\"/schema/\"public\""
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\restaurantvote\src\main\resources" />
       <recent name="C:\Projects\restaurantvote" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\restaurantvote\src\main\resources\spring" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="scooterthecat.restaurantvote.repository" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Database Script.populateDB.sql">
     <configuration name="SpringMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="scooterthecat.restaurantvote.SpringMain" />
       <module name="restaurantvote" />
@@ -80,8 +87,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="populateDB.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/resources/db/populateDB.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="a36cdffc-e757-4b86-9a1d-cc7d43db9e31" namespace="database/&quot;testvote&quot;/schema/&quot;public&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Database Script.populateDB.sql" />
         <item itemvalue="Application.SpringMain" />
       </list>
     </recent_temporary>
@@ -103,7 +117,7 @@
       <workItem from="1679293006965" duration="9300000" />
       <workItem from="1679323721569" duration="657000" />
       <workItem from="1679364231111" duration="4277000" />
-      <workItem from="1679372232191" duration="5319000" />
+      <workItem from="1679372232191" duration="15177000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1678432688107</created>
@@ -154,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679313486719</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Добавил ограничения, нужно будет тестить">
+      <created>1679382601581</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679382601581</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,14 +198,15 @@
     <MESSAGE value="created model layer" />
     <MESSAGE value="added some orm annotations(not finished yet)" />
     <MESSAGE value="Добавлены классы репозиториев, расширен маппинг энтити, сгенерированы корректные таблицы на основе аннтоаций. Нужно добавить ограничения." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены классы репозиториев, расширен маппинг энтити, сгенерированы корректные таблицы на основе аннтоаций. Нужно добавить ограничения." />
+    <MESSAGE value="Добавил ограничения, нужно будет тестить" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил ограничения, нужно будет тестить" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseEntity.java</url>
-          <line>44</line>
+          <line>45</line>
           <properties class="scooterthecat.restaurantvote.model.BaseEntity" method="equals">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
