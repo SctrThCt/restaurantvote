@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44e49a30-03fa-4681-b399-aba7061dd5f1" name="Changes" comment="Добавил ограничения, нужно будет тестить">
+    <list default="true" id="44e49a30-03fa-4681-b399-aba7061dd5f1" name="Changes" comment="Спопулировал ДБ">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/BaseEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Vote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Vote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudMealRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudMealRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudMenuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudMenuRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudRestaurantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudRestaurantRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudVoteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudVoteRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/initDB.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/initDB_hsql.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/populateDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/populateDB.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/tomcat.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/tomcat.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-db.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-db.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,33 +35,38 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2MoS0tG7estgkrcqK5veoIi0UDz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Projects/restaurantvote/src/main/resources",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "spring.configuration.checksum": "b50e0d1b963433b5be2fb6d183eba252"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/restaurantvote/src/main/resources&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b50e0d1b963433b5be2fb6d183eba252&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "RunConfigurationTargetLRU": [
-      "a36cdffc-e757-4b86-9a1d-cc7d43db9e31/database/\"testvote\"/schema/\"public\""
+    &quot;RunConfigurationTargetLRU&quot;: [
+      &quot;a36cdffc-e757-4b86-9a1d-cc7d43db9e31/database/\&quot;testvote\&quot;/schema/\&quot;public\&quot;&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\restaurantvote\src\main\resources" />
@@ -73,7 +79,7 @@
       <recent name="scooterthecat.restaurantvote.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Database Script.populateDB.sql">
+  <component name="RunManager" selected="Application.SpringMain">
     <configuration name="SpringMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="scooterthecat.restaurantvote.SpringMain" />
       <module name="restaurantvote" />
@@ -95,8 +101,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Database Script.populateDB.sql" />
         <item itemvalue="Application.SpringMain" />
+        <item itemvalue="Database Script.populateDB.sql" />
       </list>
     </recent_temporary>
   </component>
@@ -117,7 +123,11 @@
       <workItem from="1679293006965" duration="9300000" />
       <workItem from="1679323721569" duration="657000" />
       <workItem from="1679364231111" duration="4277000" />
-      <workItem from="1679372232191" duration="15177000" />
+      <workItem from="1679372232191" duration="17519000" />
+      <workItem from="1679402080257" duration="3805000" />
+      <workItem from="1679461001722" duration="1199000" />
+      <workItem from="1679470406295" duration="1355000" />
+      <workItem from="1679540362249" duration="106000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1678432688107</created>
@@ -175,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679382601581</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Спопулировал ДБ">
+      <created>1679397719671</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1679397719671</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,7 +216,8 @@
     <MESSAGE value="added some orm annotations(not finished yet)" />
     <MESSAGE value="Добавлены классы репозиториев, расширен маппинг энтити, сгенерированы корректные таблицы на основе аннтоаций. Нужно добавить ограничения." />
     <MESSAGE value="Добавил ограничения, нужно будет тестить" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил ограничения, нужно будет тестить" />
+    <MESSAGE value="Спопулировал ДБ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Спопулировал ДБ" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
