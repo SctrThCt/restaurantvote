@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="restaurantvote:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44e49a30-03fa-4681-b399-aba7061dd5f1" name="Changes" comment="Спопулировал ДБ">
+    <list default="true" id="44e49a30-03fa-4681-b399-aba7061dd5f1" name="Changes" comment="добавил репозитории">
+      <change afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/MealRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/MenuRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/RestaurantRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/UserRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/VoteRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Vote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Vote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/model/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudMealRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudMealRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudMenuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudMenuRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudRestaurantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudRestaurantRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudVoteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/CrudVoteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/initDB.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/initDB_hsql.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scooterthecat/restaurantvote/repository/DataJpaRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,12 +36,20 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -44,29 +63,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Projects/restaurantvote/src/main/resources&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;b50e0d1b963433b5be2fb6d183eba252&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Projects/restaurantvote/src/main/resources",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "spring.configuration.checksum": "b50e0d1b963433b5be2fb6d183eba252"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ],
-    &quot;RunConfigurationTargetLRU&quot;: [
-      &quot;a36cdffc-e757-4b86-9a1d-cc7d43db9e31/database/\&quot;testvote\&quot;/schema/\&quot;public\&quot;&quot;
+    "RunConfigurationTargetLRU": [
+      "a36cdffc-e757-4b86-9a1d-cc7d43db9e31/database/\"testvote\"/schema/\"public\""
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projects\restaurantvote\src\main\resources" />
@@ -79,7 +99,7 @@
       <recent name="scooterthecat.restaurantvote.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SpringMain">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.71">
     <configuration name="SpringMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="scooterthecat.restaurantvote.SpringMain" />
       <module name="restaurantvote" />
@@ -99,10 +119,102 @@
       <data-source id="a36cdffc-e757-4b86-9a1d-cc7d43db9e31" namespace="database/&quot;testvote&quot;/schema/&quot;public&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Tomcat 9.0.71" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.71" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="restaurantvote:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/restaurantvote" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="a344cf55-c4c9-45f3-a529-c01223fc50b0" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62564" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="restaurantvote:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.SpringMain" />
+      <item itemvalue="Database Script.populateDB.sql" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.71" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SpringMain" />
         <item itemvalue="Database Script.populateDB.sql" />
+        <item itemvalue="Application.SpringMain" />
       </list>
     </recent_temporary>
   </component>
@@ -128,6 +240,11 @@
       <workItem from="1679461001722" duration="1199000" />
       <workItem from="1679470406295" duration="1355000" />
       <workItem from="1679540362249" duration="106000" />
+      <workItem from="1679543560659" duration="1317000" />
+      <workItem from="1679567709322" duration="2817000" />
+      <workItem from="1679587854151" duration="8000" />
+      <workItem from="1679663166234" duration="1220000" />
+      <workItem from="1680089618789" duration="5175000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1678432688107</created>
@@ -192,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679397719671</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="добавил репозитории">
+      <created>1679543610644</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1679543610644</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +341,8 @@
     <MESSAGE value="Добавлены классы репозиториев, расширен маппинг энтити, сгенерированы корректные таблицы на основе аннтоаций. Нужно добавить ограничения." />
     <MESSAGE value="Добавил ограничения, нужно будет тестить" />
     <MESSAGE value="Спопулировал ДБ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Спопулировал ДБ" />
+    <MESSAGE value="добавил репозитории" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавил репозитории" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

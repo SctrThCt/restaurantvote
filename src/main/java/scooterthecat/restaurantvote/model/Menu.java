@@ -3,6 +3,8 @@ package scooterthecat.restaurantvote.model;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name = "menu",uniqueConstraints = {@UniqueConstraint(columnNames = {"date", "restaurant_id"}, name = "one_menu_for_restaurant_per_day")})
 public class Menu extends BaseEntity{
@@ -15,7 +17,7 @@ public class Menu extends BaseEntity{
             joinColumns = @JoinColumn(name = "menu_id"),
             inverseJoinColumns = @JoinColumn(name = "meal_id"),
             uniqueConstraints = {@UniqueConstraint(columnNames = {"menu_id", "meal_id"}, name = "unique_meal_for_menu")})
-    private List<Meal> meals;
+    private Set<Meal> meals;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
@@ -29,11 +31,11 @@ public class Menu extends BaseEntity{
         this.date = date;
     }
 
-    public List<Meal> getMeals() {
+    public Set<Meal> getMeals() {
         return meals;
     }
 
-    public void setMeals(List<Meal> meals) {
+    public void setMeals(Set<Meal> meals) {
         this.meals = meals;
     }
 
