@@ -2,16 +2,15 @@ package scooterthecat.restaurantvote.repository;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import scooterthecat.restaurantvote.model.Meal;
 import scooterthecat.restaurantvote.model.User;
 
 import java.util.List;
 
 @Repository
-public class UserRepositoryImpl {
+public class UserRepository {
     private final CrudUserRepository crudUserRepository;
 
-    public UserRepositoryImpl(CrudUserRepository crudUserRepository) {
+    public UserRepository(CrudUserRepository crudUserRepository) {
         this.crudUserRepository = crudUserRepository;
     }
 
@@ -22,9 +21,9 @@ public class UserRepositoryImpl {
     }
 
     @Transactional
-    public void delete(int id)
+    public boolean delete(int id)
     {
-        crudUserRepository.deleteById(id);
+        return crudUserRepository.delete(id)!=0;
     }
 
     public User get(int id)

@@ -1,6 +1,5 @@
 package scooterthecat.restaurantvote.repository;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import scooterthecat.restaurantvote.model.Meal;
@@ -8,11 +7,11 @@ import scooterthecat.restaurantvote.model.Meal;
 import java.util.List;
 
 @Repository
-public class MealRepositoryImpl {
+public class MealRepository{
 
     private final CrudMealRepository crudMealRepository;
 
-    public MealRepositoryImpl(CrudMealRepository crudMealRepository) {
+    public MealRepository(CrudMealRepository crudMealRepository) {
         this.crudMealRepository = crudMealRepository;
     }
     @Transactional
@@ -22,9 +21,9 @@ public class MealRepositoryImpl {
     }
 
     @Transactional
-    public void delete(int id)
+    public boolean delete(int id)
     {
-        crudMealRepository.deleteById(id);
+        return crudMealRepository.delete(id)!=0;
     }
 
     public Meal get(int id)

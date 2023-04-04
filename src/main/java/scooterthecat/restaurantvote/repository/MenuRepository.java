@@ -2,16 +2,15 @@ package scooterthecat.restaurantvote.repository;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import scooterthecat.restaurantvote.model.Meal;
 import scooterthecat.restaurantvote.model.Menu;
 
 import java.util.List;
 
 @Repository
-public class MenuRepositoryImpl {
+public class MenuRepository {
     private final CrudMenuRepository crudMenuRepository;
 
-    public MenuRepositoryImpl(CrudMenuRepository crudMenuRepository) {
+    public MenuRepository(CrudMenuRepository crudMenuRepository) {
         this.crudMenuRepository = crudMenuRepository;
     }
 
@@ -22,9 +21,9 @@ public class MenuRepositoryImpl {
     }
 
     @Transactional
-    public void delete(int id)
+    public boolean delete(int id)
     {
-        crudMenuRepository.deleteById(id);
+        return crudMenuRepository.delete(id)!=0;
     }
 
     public Menu get(int id)
