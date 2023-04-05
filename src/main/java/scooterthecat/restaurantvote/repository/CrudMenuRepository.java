@@ -25,4 +25,8 @@ public interface CrudMenuRepository extends JpaRepository<Menu, Integer> {
     @Modifying
     @Query("delete from Menu m where m.id=:id")
     int delete (@Param("id") int id);
+
+    @Modifying
+    @Query(value = "update Menu set meal_id=:mealId where menu_id=:menuId")
+    int addMealToMenu(@Param("menuId")int menuId,@Param("mealId")int mealId);
 }

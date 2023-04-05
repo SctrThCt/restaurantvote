@@ -1,47 +1,38 @@
 package scooterthecat.restaurantvote.web;
 
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RestController;
 import scooterthecat.restaurantvote.model.Restaurant;
-import scooterthecat.restaurantvote.repository.RestaurantRepository;
+import scooterthecat.restaurantvote.service.RestaurantService;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.*;
-import static scooterthecat.restaurantvote.util.ValidationUtil.checkNotFoundWithId;
+import java.util.List;
+
 @RestController
-public class RestaurantController extends RootController{
+public class RestaurantController extends RootController {
 
-    private final RestaurantRepository repository;
+    private final RestaurantService service;
 
-    public RestaurantController(RestaurantRepository repository) {
-        this.repository = repository;
+    public RestaurantController(RestaurantService service) {
+        this.service = service;
     }
 
-    public Restaurant get(int id)
-    {
-        return checkNotFoundWithId(repository.get(id),id);
+
+    public Restaurant get(int id) {
+        return service.get(id);
     }
 
-    public void delete(int id)
-    {
-        checkNotFoundWithId(repository.delete(id),id);
+    public void delete(int id) {
+        service.delete(id);
     }
 
-    public Restaurant create (Restaurant restaurant)
-    {
-        Assert.notNull(restaurant,"restaurant must not be null");
-        checkNew(restaurant);
-        return repository.save(restaurant);
+    public Restaurant create(Restaurant restaurant) {
+        return service.create(restaurant);
     }
 
-    public void update (Restaurant menu)
-    {
-        Assert.notNull(menu,"restaurant must not be null");
-        assureIdConsistent(menu, menu.id());
-        checkNotFoundWithId(repository.save(menu), menu.id());
+    public void update(Restaurant restaurant) {
+        service.update(restaurant);
     }
 
-    public void getAll()
-    {
-        repository.getAll();
+    public List<Restaurant> getAll() {
+        return service.getAll();
     }
 }

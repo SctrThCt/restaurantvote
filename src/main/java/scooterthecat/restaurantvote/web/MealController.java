@@ -1,47 +1,43 @@
 package scooterthecat.restaurantvote.web;
 
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import scooterthecat.restaurantvote.model.Meal;
-import scooterthecat.restaurantvote.repository.MealRepository;
+import scooterthecat.restaurantvote.service.MealService;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.*;
+import java.util.List;
 
 @RestController
-public class MealController extends RootController{
+@RequestMapping("/admin/meals")
+public class MealController extends RootController {
 
-    private final MealRepository repository;
+    private final MealService service;
 
-    public MealController(MealRepository repository) {
-        this.repository = repository;
+    public MealController(MealService service) {
+        this.service = service;
     }
 
-    public Meal get(int id)
-    {
-        return checkNotFoundWithId(repository.get(id),id);
+    @GetMapping("/{id}")
+    public Meal get(@PathVariable int id) {
+        return service.get(id);
     }
 
-    public void delete(int id)
-    {
-        checkNotFoundWithId(repository.delete(id),id);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id) {
+        service.delete(id);
     }
 
-    public Meal create (Meal meal)
-    {
-        Assert.notNull(meal,"meal must not be null");
-        checkNew(meal);
-        return repository.save(meal);
+    @PostMapping
+    public Meal create(Meal meal) {
+        return service.create(meal);
     }
 
-    public void update (Meal meal)
-    {
-        Assert.notNull(meal,"meal must not be null");
-        assureIdConsistent(meal, meal.id());
-        checkNotFoundWithId(repository.save(meal), meal.id());
+    @PutMapping("/{id}")
+    public void update(@RequestParam Meal meal, @PathVariable int id) {
+        service.update(meal);
     }
 
-    public void getAll()
-    {
-        repository.getAll();
+    @GetMapping
+    public List<Meal> getAll() {
+        return service.getAll();
     }
 }

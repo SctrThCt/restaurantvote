@@ -35,4 +35,8 @@ public class MealRepository{
     {
         return crudMealRepository.findAll();
     }
+    public List<Meal> getListOfMeal(List<Integer> ids)
+    {
+       return crudMealRepository.findAllById(ids);
+    }
 }

@@ -13,8 +13,10 @@ import java.util.Set;
 public class Restaurant extends BaseNamedEntity {
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    @OrderBy("date ASC")
     List<Menu> menu;
     @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    @OrderBy("dateTime ASC")
     List<Vote> votes;
 }

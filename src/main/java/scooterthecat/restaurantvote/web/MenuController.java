@@ -1,48 +1,52 @@
 package scooterthecat.restaurantvote.web;
 
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.RestController;
-import scooterthecat.restaurantvote.model.Meal;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import scooterthecat.restaurantvote.model.Menu;
-import scooterthecat.restaurantvote.repository.MenuRepository;
+import scooterthecat.restaurantvote.service.MenuService;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.*;
-import static scooterthecat.restaurantvote.util.ValidationUtil.checkNotFoundWithId;
+import java.util.List;
+
 @RestController
-public class MenuController extends RootController{
+@RequestMapping(value = MenuController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class MenuController extends RootController {
 
-    private final MenuRepository repository;
+    static final String REST_URL = "/admin/menu";
 
-    public MenuController(MenuRepository repository) {
-        this.repository = repository;
+    private final MenuService service;
+
+    public MenuController(MenuService service) {
+        this.service = service;
     }
 
-    public Menu get(int id)
-    {
-        return checkNotFoundWithId(repository.get(id),id);
+
+    @GetMapping("/{id}")
+    public Menu get(@PathVariable int id) {
+        return service.get(id);
     }
 
-    public void delete(int id)
-    {
-        checkNotFoundWithId(repository.delete(id),id);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id) {
+        service.delete(id);
     }
 
-    public Menu create (Menu menu)
-    {
-        Assert.notNull(menu,"menu must not be null");
-        checkNew(menu);
-        return repository.save(menu);
+    @PostMapping
+    public Menu create(@RequestParam Menu menu) {
+        return service.create(menu);
     }
 
-    public void update (Menu menu)
-    {
-        Assert.notNull(menu,"menu must not be null");
-        assureIdConsistent(menu, menu.id());
-        checkNotFoundWithId(repository.save(menu), menu.id());
+    @PatchMapping("/{id}")
+    public void update(@RequestParam Menu menu, @PathVariable int id) {
+        service.update(menu);
     }
 
-    public void getAll()
-    {
-        repository.getAll();
+    @GetMapping
+    public List<Menu> getAll() {
+        return service.getAll();
+    }
+
+    @PostMapping("/{id}/add-meal")
+    public void addMealToMenu(@PathVariable int id, @RequestParam int mealId) {
+        service.addMealToMenu(id, mealId);
     }
 }

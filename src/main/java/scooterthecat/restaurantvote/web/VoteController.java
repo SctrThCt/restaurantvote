@@ -3,45 +3,43 @@ package scooterthecat.restaurantvote.web;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RestController;
 import scooterthecat.restaurantvote.model.Vote;
-import scooterthecat.restaurantvote.repository.VoteRepository;
+import scooterthecat.restaurantvote.service.VoteService;
+
+import java.util.List;
 
 import static scooterthecat.restaurantvote.util.ValidationUtil.*;
 import static scooterthecat.restaurantvote.util.ValidationUtil.checkNotFoundWithId;
 @RestController
 public class VoteController extends RootController{
 
-    private final VoteRepository repository;
+    private final VoteService service;
 
-    public VoteController(VoteRepository repository) {
-        this.repository = repository;
+    public VoteController(VoteService service) {
+        this.service = service;
     }
 
     public Vote get(int id)
     {
-        return checkNotFoundWithId(repository.get(id),id);
+        return service.get(id);
     }
 
     public void delete(int id, int userId)
     {
-        checkNotFoundWithId(repository.delete(id, userId),id);
+        service.delete(id,userId);
     }
 
     public Vote create (Vote vote)
     {
-        Assert.notNull(vote,"vote must not be null");
-        checkNew(vote);
-        return repository.save(vote);
+        return service.create(vote);
     }
 
-    public void update (Vote menu)
+    public void update (Vote vote)
     {
-        Assert.notNull(menu,"vote must not be null");
-        assureIdConsistent(menu, menu.id());
-        checkNotFoundWithId(repository.save(menu), menu.id());
+        service.update(vote);
     }
 
-    public void getAll()
+    public List<Vote> getAll()
     {
-        repository.getAll();
+        return service.getAll();
     }
 }
