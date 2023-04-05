@@ -1,5 +1,6 @@
 package scooterthecat.restaurantvote.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.*;
 import org.hibernate.annotations.Cache;
 
@@ -45,6 +46,7 @@ public class User extends BaseNamedEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<Role> roles;
 
+    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @OrderBy("dateTime DESC")
     @OnDelete(action = OnDeleteAction.CASCADE)

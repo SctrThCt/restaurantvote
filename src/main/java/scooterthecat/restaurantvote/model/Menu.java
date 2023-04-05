@@ -1,6 +1,9 @@
 package scooterthecat.restaurantvote.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +13,7 @@ import java.util.Set;
 public class Menu extends BaseEntity{
 
     @Column(name = "date", nullable = false)
-    private Date date;
+    private LocalDate date;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "menu_meal",
@@ -21,13 +24,14 @@ public class Menu extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
+    @JsonBackReference
     private Restaurant restaurant;
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate localDate) {
         this.date = date;
     }
 

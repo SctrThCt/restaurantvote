@@ -1,12 +1,13 @@
 package scooterthecat.restaurantvote.web;
 
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.RestController;
 import scooterthecat.restaurantvote.model.Vote;
 import scooterthecat.restaurantvote.repository.VoteRepository;
 
 import static scooterthecat.restaurantvote.util.ValidationUtil.*;
 import static scooterthecat.restaurantvote.util.ValidationUtil.checkNotFoundWithId;
-
+@RestController
 public class VoteController extends RootController{
 
     private final VoteRepository repository;

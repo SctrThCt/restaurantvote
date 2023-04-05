@@ -1,13 +1,14 @@
 package scooterthecat.restaurantvote.web;
 
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.RestController;
 import scooterthecat.restaurantvote.model.Meal;
 import scooterthecat.restaurantvote.model.Menu;
 import scooterthecat.restaurantvote.repository.MenuRepository;
 
 import static scooterthecat.restaurantvote.util.ValidationUtil.*;
 import static scooterthecat.restaurantvote.util.ValidationUtil.checkNotFoundWithId;
-
+@RestController
 public class MenuController extends RootController{
 
     private final MenuRepository repository;
