@@ -6,6 +6,8 @@ import scooterthecat.restaurantvote.service.MealService;
 
 import java.util.List;
 
+import static scooterthecat.restaurantvote.util.ValidationUtil.assureIdConsistent;
+
 @RestController
 @RequestMapping("/admin/meals")
 public class MealController extends RootController {
@@ -33,7 +35,8 @@ public class MealController extends RootController {
 
     @PutMapping("/{id}")
     public void update(@RequestParam Meal meal, @PathVariable int id) {
-        service.update(meal);
+        assureIdConsistent(meal, id);
+        service.update(meal, id);
     }
 
     @GetMapping

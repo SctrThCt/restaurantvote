@@ -1,6 +1,7 @@
 package scooterthecat.restaurantvote.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import scooterthecat.restaurantvote.model.Meal;
 import scooterthecat.restaurantvote.repository.MealRepository;
@@ -11,6 +12,7 @@ import static scooterthecat.restaurantvote.util.ValidationUtil.*;
 import static scooterthecat.restaurantvote.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
+@Transactional(readOnly = true)
 public class MealService {
 
     private final MealRepository repository;
@@ -29,6 +31,7 @@ public class MealService {
         checkNotFoundWithId(repository.delete(id),id);
     }
 
+    @Transactional
     public Meal create (Meal meal)
     {
         Assert.notNull(meal,"meal must not be null");
@@ -36,11 +39,11 @@ public class MealService {
         return repository.save(meal);
     }
 
-    public void update (Meal meal)
+    @Transactional
+    public void update (Meal meal, int id)
     {
         Assert.notNull(meal,"meal must not be null");
-        assureIdConsistent(meal, meal.id());
-        checkNotFoundWithId(repository.save(meal), meal.id());
+        checkNotFoundWithId(repository.save(meal), id);
     }
 
     public List<Meal> getAll()

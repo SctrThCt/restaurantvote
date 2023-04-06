@@ -7,6 +7,7 @@ import scooterthecat.restaurantvote.model.Meal;
 import java.util.List;
 
 @Repository
+
 public class MealRepository{
 
     private final CrudMealRepository crudMealRepository;
@@ -14,13 +15,12 @@ public class MealRepository{
     public MealRepository(CrudMealRepository crudMealRepository) {
         this.crudMealRepository = crudMealRepository;
     }
-    @Transactional
+
     public Meal save(Meal meal)
     {
         return crudMealRepository.save(meal);
     }
 
-    @Transactional
     public boolean delete(int id)
     {
         return crudMealRepository.delete(id)!=0;
@@ -35,8 +35,5 @@ public class MealRepository{
     {
         return crudMealRepository.findAll();
     }
-    public List<Meal> getListOfMeal(List<Integer> ids)
-    {
-       return crudMealRepository.findAllById(ids);
-    }
+
 }
