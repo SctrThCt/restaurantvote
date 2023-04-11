@@ -45,8 +45,14 @@ public class MenuController extends RootController {
         return service.getAll();
     }
 
-    @PostMapping("/{id}/add-meal")
+    @PostMapping("/{id}/meal")
     public void addMealToMenu(@PathVariable int id, @RequestParam int mealId) {
         service.addMealToMenu(id, mealId);
+    }
+
+    @DeleteMapping("/{id}/meal")
+    public void removeMealFromMenu(@PathVariable int id,@RequestParam int mealId)
+    {
+        service.removeMealFromMenu(id, mealId);
     }
 }

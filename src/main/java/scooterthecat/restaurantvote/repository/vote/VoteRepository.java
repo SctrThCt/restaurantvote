@@ -1,4 +1,4 @@
-package scooterthecat.restaurantvote.repository;
+package scooterthecat.restaurantvote.repository.vote;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

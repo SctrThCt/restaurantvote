@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import scooterthecat.restaurantvote.model.Meal;
-import scooterthecat.restaurantvote.repository.MealRepository;
+import scooterthecat.restaurantvote.repository.meal.MealRepository;
 
 import java.util.List;
 

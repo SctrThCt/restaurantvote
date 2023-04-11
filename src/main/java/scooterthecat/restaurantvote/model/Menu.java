@@ -27,6 +27,8 @@ public class Menu extends BaseEntity{
     @JsonBackReference
     private Restaurant restaurant;
 
+    public Menu(){}
+
     public LocalDate getDate() {
         return date;
     }

@@ -1,9 +1,14 @@
 package scooterthecat.restaurantvote.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import scooterthecat.restaurantvote.model.Menu;
 import scooterthecat.restaurantvote.model.Restaurant;
-import scooterthecat.restaurantvote.repository.RestaurantRepository;
+import scooterthecat.restaurantvote.repository.menu.MenuRepository;
+import scooterthecat.restaurantvote.repository.restaurant.RestaurantRepository;
+import scooterthecat.restaurantvote.to.RestaurantTo;
+import scooterthecat.restaurantvote.util.RestaurantUtil;
 
 import java.util.List;
 
@@ -12,34 +17,55 @@ import static scooterthecat.restaurantvote.util.ValidationUtil.*;
 @Service
 public class RestaurantService {
 
-    private final RestaurantRepository repository;
+    private final RestaurantRepository restaurantRepository;
+    private final MenuRepository menuRepository;
 
-    public RestaurantService(RestaurantRepository repository) {
-        this.repository = repository;
+    public RestaurantService(RestaurantRepository restaurantRepository, MenuRepository menuRepository) {
+        this.restaurantRepository = restaurantRepository;
+        this.menuRepository = menuRepository;
     }
 
 
     public Restaurant get(int id) {
-        return checkNotFoundWithId(repository.get(id), id);
+        return checkNotFoundWithId(restaurantRepository.get(id), id);
     }
-
+    @Transactional
     public void delete(int id) {
-        checkNotFoundWithId(repository.delete(id), id);
+        checkNotFoundWithId(restaurantRepository.delete(id), id);
     }
-
+    @Transactional
     public Restaurant create(Restaurant restaurant) {
         Assert.notNull(restaurant, "restaurant must not be null");
         checkNew(restaurant);
-        return repository.save(restaurant);
+        return restaurantRepository.save(restaurant);
     }
-
+    @Transactional
     public void update(Restaurant restaurant) {
         Assert.notNull(restaurant, "restaurant must not be null");
-        assureIdConsistent(restaurant, restaurant.id());
-        checkNotFoundWithId(repository.save(restaurant), restaurant.id());
+        restaurantRepository.save(restaurant);
     }
 
     public List<Restaurant> getAll() {
-        return repository.getAll();
+        return restaurantRepository.getAll();
+    }
+    @Transactional
+    public void addMenuToRestaurant(int id, int menuId)
+    {
+        Restaurant restaurant = restaurantRepository.get(id);
+        Menu menu = menuRepository.get(menuId);
+        restaurant.getMenu().add(menu);
+    }
+
+    @Transactional
+    public void removeMenuFromRestaurant(int id, int menuId)
+    {
+        Restaurant restaurant = restaurantRepository.get(id);
+        Menu menu = menuRepository.get(menuId);
+        restaurant.getMenu().remove(menu);
+    }
+
+    public List<RestaurantTo> getAllRestaurantsForVote()
+    {
+        return RestaurantUtil.getTos(restaurantRepository.getAllWithMenus());
     }
 }

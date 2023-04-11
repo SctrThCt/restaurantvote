@@ -13,6 +13,14 @@ public abstract class BaseNamedEntity extends BaseEntity{
     @Column(name = "name", nullable = false)
     protected String name;
 
+    public BaseNamedEntity(){}
+
+    public BaseNamedEntity(Integer id,String name)
+    {
+        super(id);
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

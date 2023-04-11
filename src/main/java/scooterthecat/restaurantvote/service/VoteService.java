@@ -3,7 +3,7 @@ package scooterthecat.restaurantvote.service;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import scooterthecat.restaurantvote.model.Vote;
-import scooterthecat.restaurantvote.repository.VoteRepository;
+import scooterthecat.restaurantvote.repository.vote.VoteRepository;
 
 import java.util.List;
 

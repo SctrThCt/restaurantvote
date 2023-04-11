@@ -1,4 +1,4 @@
-package scooterthecat.restaurantvote.repository;
+package scooterthecat.restaurantvote.repository.vote;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

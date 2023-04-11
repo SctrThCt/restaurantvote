@@ -1,4 +1,4 @@
-package scooterthecat.restaurantvote.repository;
+package scooterthecat.restaurantvote.repository.menu;
 
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,7 +26,5 @@ public interface CrudMenuRepository extends JpaRepository<Menu, Integer> {
     @Query("delete from Menu m where m.id=:id")
     int delete (@Param("id") int id);
 
-    @Modifying
-    @Query(value = "update Menu set meal_id=:mealId where menu_id=:menuId")
-    int addMealToMenu(@Param("menuId")int menuId,@Param("mealId")int mealId);
+
 }

@@ -1,11 +1,12 @@
 package scooterthecat.restaurantvote.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import scooterthecat.restaurantvote.model.Meal;
 import scooterthecat.restaurantvote.model.Menu;
-import scooterthecat.restaurantvote.repository.MealRepository;
-import scooterthecat.restaurantvote.repository.MenuRepository;
+import scooterthecat.restaurantvote.repository.meal.MealRepository;
+import scooterthecat.restaurantvote.repository.menu.MenuRepository;
 
 import java.util.List;
 
@@ -44,11 +45,20 @@ public class MenuService {
     public List<Menu> getAll() {
         return menuRepository.getAll();
     }
-
+    @Transactional
     public void addMealToMenu(int id, int mealId) {
         Menu menu = checkNotFoundWithId(menuRepository.get(id), id);
         Meal meal = checkNotFoundWithId(mealRepository.get(mealId), mealId);
         menu.getMeals().add(meal);
-        menuRepository.save(menu);
+        //menuRepository.save(menu);
+    }
+
+    @Transactional
+    public void removeMealFromMenu(int id, int mealId)
+    {
+        Menu menu = checkNotFoundWithId(menuRepository.get(id), id);
+        Meal meal = checkNotFoundWithId(mealRepository.get(mealId), mealId);
+        menu.getMeals().remove(meal);
+        //menuRepository.save(menu);
     }
 }

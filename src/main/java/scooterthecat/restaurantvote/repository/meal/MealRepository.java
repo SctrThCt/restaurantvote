@@ -1,7 +1,6 @@
-package scooterthecat.restaurantvote.repository;
+package scooterthecat.restaurantvote.repository.meal;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import scooterthecat.restaurantvote.model.Meal;
 
 import java.util.List;
