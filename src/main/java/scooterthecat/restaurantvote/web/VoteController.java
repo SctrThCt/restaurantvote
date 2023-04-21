@@ -1,16 +1,13 @@
 package scooterthecat.restaurantvote.web;
 
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RestController;
 import scooterthecat.restaurantvote.model.Vote;
 import scooterthecat.restaurantvote.service.VoteService;
 
 import java.util.List;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.*;
-import static scooterthecat.restaurantvote.util.ValidationUtil.checkNotFoundWithId;
 @RestController
-public class VoteController extends RootController{
+public class VoteController extends RootController {
 
     private final VoteService service;
 
@@ -18,28 +15,23 @@ public class VoteController extends RootController{
         this.service = service;
     }
 
-    public Vote get(int id)
-    {
+    public Vote get(int id) {
         return service.get(id);
     }
 
-    public void delete(int id, int userId)
-    {
-        service.delete(id,userId);
+    public void delete(int id, int userId) {
+        service.delete(id, userId);
     }
 
-    public Vote create (Vote vote)
-    {
+    public Vote create(Vote vote) {
         return service.create(vote);
     }
 
-    public void update (Vote vote)
-    {
+    public void update(Vote vote) {
         service.update(vote);
     }
 
-    public List<Vote> getAll()
-    {
+    public List<Vote> getAll() {
         return service.getAll();
     }
 }

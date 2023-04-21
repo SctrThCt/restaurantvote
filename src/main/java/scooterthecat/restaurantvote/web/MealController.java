@@ -6,7 +6,7 @@ import scooterthecat.restaurantvote.service.MealService;
 
 import java.util.List;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.assureIdConsistent;
+import static scooterthecat.restaurantvote.util.validation.ValidationUtil.assureIdConsistent;
 
 @RestController
 @RequestMapping("/admin/meals")

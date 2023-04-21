@@ -2,16 +2,14 @@ package scooterthecat.restaurantvote.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import scooterthecat.restaurantvote.to.RestaurantTo;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
 @Table(name = "restaurant")
-public class Restaurant extends BaseNamedEntity {
+public class Restaurant extends NamedEntity {
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     @OrderBy("date ASC")

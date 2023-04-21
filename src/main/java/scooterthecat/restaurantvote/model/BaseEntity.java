@@ -1,66 +1,61 @@
 package scooterthecat.restaurantvote.model;
 
-import org.hibernate.Hibernate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.*;
 import org.springframework.data.domain.Persistable;
+import org.springframework.data.util.ProxyUtils;
 import org.springframework.util.Assert;
+import scooterthecat.restaurantvote.HasId;
 
 import javax.persistence.*;
 
 @MappedSuperclass
-public abstract class BaseEntity implements Persistable<Integer> {
-    public static final int START_SEQ = 100000;
+//  https://stackoverflow.com/a/6084701/548473
+@Access(AccessType.FIELD)
+@Getter
+@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+public abstract class BaseEntity implements Persistable<Integer>, HasId {
 
     @Id
-    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
-    @Column(name = "id", unique = true, nullable = false, columnDefinition = "integer default nextval('global_seq')")
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY) // https://stackoverflow.com/a/28025008/548473
     protected Integer id;
 
-    protected BaseEntity()
-    {}
-
-    protected BaseEntity(int id)
-    {
-    this.id = id;
-    }
-    @Override
-    public Integer getId() {
+    // doesn't work for hibernate lazy proxy
+    public int id() {
+        Assert.notNull(id, "Entity must have id");
         return id;
     }
-    public void setId(int id)
-    {
-        this.id=id;
-    }
 
+    @JsonIgnore
     @Override
     public boolean isNew() {
-        return id==null;
+        return id == null;
     }
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + ":" + id;
-    }
-
+    //    https://stackoverflow.com/questions/1638723
     @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-        if (o == null || !getClass().equals(Hibernate.getClass(o))) {
+        if (o == null || !getClass().equals(ProxyUtils.getUserClass(o))) {
             return false;
         }
         BaseEntity that = (BaseEntity) o;
         return id != null && id.equals(that.id);
     }
 
-    public int id() {
-        Assert.notNull(id, "Entity must have id");
-        return id;
-    }
-
     @Override
     public int hashCode() {
         return id == null ? 0 : id;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + ":" + id;
     }
 }

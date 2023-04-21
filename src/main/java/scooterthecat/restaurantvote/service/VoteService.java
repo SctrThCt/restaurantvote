@@ -7,8 +7,8 @@ import scooterthecat.restaurantvote.repository.vote.VoteRepository;
 
 import java.util.List;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.*;
-import static scooterthecat.restaurantvote.util.ValidationUtil.checkNotFoundWithId;
+import static scooterthecat.restaurantvote.util.validation.ValidationUtil.assureIdConsistent;
+import static scooterthecat.restaurantvote.util.validation.ValidationUtil.checkNew;
 
 @Service
 public class VoteService {
@@ -19,32 +19,27 @@ public class VoteService {
         this.repository = repository;
     }
 
-    public Vote get(int id)
-    {
-        return checkNotFoundWithId(repository.get(id),id);
+    public Vote get(int id) {
+        return repository.get(id);
     }
 
-    public void delete(int id, int userId)
-    {
-        checkNotFoundWithId(repository.delete(id, userId),id);
+    public void delete(int id, int userId) {
+        repository.delete(id, userId);
     }
 
-    public Vote create (Vote vote)
-    {
-        Assert.notNull(vote,"vote must not be null");
+    public Vote create(Vote vote) {
+        Assert.notNull(vote, "vote must not be null");
         checkNew(vote);
         return repository.save(vote);
     }
 
-    public void update (Vote vote)
-    {
-        Assert.notNull(vote,"vote must not be null");
+    public void update(Vote vote) {
+        Assert.notNull(vote, "vote must not be null");
         assureIdConsistent(vote, vote.id());
-        checkNotFoundWithId(repository.save(vote), vote.id());
+        repository.save(vote);
     }
 
-    public List<Vote> getAll()
-    {
+    public List<Vote> getAll() {
         return repository.getAll();
     }
 }

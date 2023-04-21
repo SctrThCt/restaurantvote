@@ -8,9 +8,6 @@ import scooterthecat.restaurantvote.repository.meal.MealRepository;
 
 import java.util.List;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.*;
-import static scooterthecat.restaurantvote.util.ValidationUtil.checkNotFoundWithId;
-
 @Service
 @Transactional(readOnly = true)
 public class MealService {
@@ -21,33 +18,27 @@ public class MealService {
         this.repository = repository;
     }
 
-    public Meal get(int id)
-    {
-        return checkNotFoundWithId(repository.get(id),id);
+    public Meal get(int id) {
+        return repository.get(id);
     }
 
-    public void delete(int id)
-    {
-        checkNotFoundWithId(repository.delete(id),id);
+    public void delete(int id) {
+        repository.delete(id);
     }
 
     @Transactional
-    public Meal create (Meal meal)
-    {
-        Assert.notNull(meal,"meal must not be null");
-        checkNew(meal);
+    public Meal create(Meal meal) {
+        Assert.notNull(meal, "meal must not be null");
         return repository.save(meal);
     }
 
     @Transactional
-    public void update (Meal meal, int id)
-    {
-        Assert.notNull(meal,"meal must not be null");
-        checkNotFoundWithId(repository.save(meal), id);
+    public void update(Meal meal, int id) {
+        Assert.notNull(meal, "meal must not be null");
+        repository.save(meal);
     }
 
-    public List<Meal> getAll()
-    {
+    public List<Meal> getAll() {
         return repository.getAll();
     }
 }

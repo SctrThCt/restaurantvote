@@ -10,8 +10,6 @@ import scooterthecat.restaurantvote.repository.menu.MenuRepository;
 
 import java.util.List;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.*;
-
 @Service
 public class MenuService {
     private final MealRepository mealRepository;
@@ -23,41 +21,39 @@ public class MenuService {
     }
 
     public Menu get(int id) {
-        return checkNotFoundWithId(menuRepository.get(id), id);
+        return menuRepository.get(id);
     }
 
     public void delete(int id) {
-        checkNotFoundWithId(menuRepository.delete(id), id);
+        menuRepository.delete(id);
     }
 
     public Menu create(Menu menu) {
         Assert.notNull(menu, "menu must not be null");
-        checkNew(menu);
         return menuRepository.save(menu);
     }
 
     public void update(Menu menu) {
         Assert.notNull(menu, "menu must not be null");
-        assureIdConsistent(menu, menu.id());
-        checkNotFoundWithId(menuRepository.save(menu), menu.id());
+        menuRepository.save(menu);
     }
 
     public List<Menu> getAll() {
         return menuRepository.getAll();
     }
+
     @Transactional
     public void addMealToMenu(int id, int mealId) {
-        Menu menu = checkNotFoundWithId(menuRepository.get(id), id);
-        Meal meal = checkNotFoundWithId(mealRepository.get(mealId), mealId);
+        Menu menu = menuRepository.get(id);
+        Meal meal = mealRepository.get(mealId);
         menu.getMeals().add(meal);
         //menuRepository.save(menu);
     }
 
     @Transactional
-    public void removeMealFromMenu(int id, int mealId)
-    {
-        Menu menu = checkNotFoundWithId(menuRepository.get(id), id);
-        Meal meal = checkNotFoundWithId(mealRepository.get(mealId), mealId);
+    public void removeMealFromMenu(int id, int mealId) {
+        Menu menu = menuRepository.get(id);
+        Meal meal = mealRepository.get(mealId);
         menu.getMeals().remove(meal);
         //menuRepository.save(menu);
     }

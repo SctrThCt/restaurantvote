@@ -12,8 +12,6 @@ import scooterthecat.restaurantvote.util.RestaurantUtil;
 
 import java.util.List;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.*;
-
 @Service
 public class RestaurantService {
 
@@ -27,18 +25,20 @@ public class RestaurantService {
 
 
     public Restaurant get(int id) {
-        return checkNotFoundWithId(restaurantRepository.get(id), id);
+        return restaurantRepository.get(id);
     }
+
     @Transactional
     public void delete(int id) {
-        checkNotFoundWithId(restaurantRepository.delete(id), id);
+        restaurantRepository.delete(id);
     }
+
     @Transactional
     public Restaurant create(Restaurant restaurant) {
         Assert.notNull(restaurant, "restaurant must not be null");
-        checkNew(restaurant);
         return restaurantRepository.save(restaurant);
     }
+
     @Transactional
     public void update(Restaurant restaurant) {
         Assert.notNull(restaurant, "restaurant must not be null");
@@ -48,24 +48,22 @@ public class RestaurantService {
     public List<Restaurant> getAll() {
         return restaurantRepository.getAll();
     }
+
     @Transactional
-    public void addMenuToRestaurant(int id, int menuId)
-    {
+    public void addMenuToRestaurant(int id, int menuId) {
         Restaurant restaurant = restaurantRepository.get(id);
         Menu menu = menuRepository.get(menuId);
         restaurant.getMenu().add(menu);
     }
 
     @Transactional
-    public void removeMenuFromRestaurant(int id, int menuId)
-    {
+    public void removeMenuFromRestaurant(int id, int menuId) {
         Restaurant restaurant = restaurantRepository.get(id);
         Menu menu = menuRepository.get(menuId);
         restaurant.getMenu().remove(menu);
     }
 
-    public List<RestaurantTo> getAllRestaurantsForVote()
-    {
+    public List<RestaurantTo> getAllRestaurantsForVote() {
         return RestaurantUtil.getTos(restaurantRepository.getAllWithMenus());
     }
 }

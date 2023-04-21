@@ -7,14 +7,15 @@ import scooterthecat.restaurantvote.to.RestaurantTo;
 
 import java.util.List;
 
-import static scooterthecat.restaurantvote.util.ValidationUtil.assureIdConsistent;
-import static scooterthecat.restaurantvote.util.ValidationUtil.checkNew;
+import static scooterthecat.restaurantvote.util.validation.ValidationUtil.assureIdConsistent;
+import static scooterthecat.restaurantvote.util.validation.ValidationUtil.checkNew;
 
 @RestController
+@RequestMapping("/")
 public class RestaurantController extends RootController {
 
-    private final String ADMIN_URL = "/admin/restaurants";
-    private final String REST_URL = "/restaurants";
+    private final String ADMIN_URL = "admin/restaurants";
+    private final String REST_URL = "restaurants";
 
     private final RestaurantService service;
 
@@ -52,7 +53,7 @@ public class RestaurantController extends RootController {
         service.addMenuToRestaurant(id,menuId);
     }
 
-    @GetMapping(REST_URL)
+    @GetMapping(value = "restaurants")
     public List<RestaurantTo> getRestaurantsForVote()
     {
         return service.getAllRestaurantsForVote();
