@@ -9,7 +9,7 @@ import java.util.List;
 import static scooterthecat.restaurantvote.util.validation.ValidationUtil.assureIdConsistent;
 
 @RestController
-@RequestMapping("/admin/meals")
+@RequestMapping("/api/admin/meals")
 public class MealController extends RootController {
 
     private final MealService service;

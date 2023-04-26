@@ -11,11 +11,10 @@ import static scooterthecat.restaurantvote.util.validation.ValidationUtil.assure
 import static scooterthecat.restaurantvote.util.validation.ValidationUtil.checkNew;
 
 @RestController
-@RequestMapping("/")
 public class RestaurantController extends RootController {
 
-    private final String ADMIN_URL = "admin/restaurants";
-    private final String REST_URL = "restaurants";
+    private final String ADMIN_URL = "/api/admin/restaurants";
+    private final String REST_URL = "/api/restaurants";
 
     private final RestaurantService service;
 
@@ -53,7 +52,7 @@ public class RestaurantController extends RootController {
         service.addMenuToRestaurant(id,menuId);
     }
 
-    @GetMapping(value = "restaurants")
+    @GetMapping(REST_URL)
     public List<RestaurantTo> getRestaurantsForVote()
     {
         return service.getAllRestaurantsForVote();

@@ -1,6 +1,6 @@
 INSERT INTO users (name, email, password)
-VALUES ('User', 'user@yandex.ru', 'password'),
-       ('Admin', 'admin@gmail.com', 'admin');
+VALUES ('User', 'user@yandex.ru', '{noop}password'),
+       ('Admin', 'admin@gmail.com', '{noop}admin');
 
 INSERT INTO user_roles (role, user_id)
 VALUES ('USER', 1),
@@ -31,28 +31,28 @@ VALUES ('Фри', 150),
        ('Почти свежая шаурма', 150),
        ('Свежая шаурма', 250),
        ('Борщ', 150);
--- INSERT INTO menu (date,restaurant_id)
--- VALUES ('2020-01-29',3),
---        ('2020-01-29',4),
---        ('2020-01-29',5),
---        ('2020-01-29',6),
---        ('2020-01-30',3),
---        ('2020-01-30',4),
---        ('2020-01-30',5),
---        ('2020-01-30',6);
---
--- INSERT INTO menu_meal (menu_id, meal_id)
--- VALUES (24,7),
---        (24,9),
---        (28,10),
---        (28,11),
---        (29,100022),
---        (30,23),
---        (30,20);
--- INSERT INTO vote (date_time, restaurant_id,user_id)
--- VALUES ('2020-01-29',5,1),
---        ('2020-01-29',4,2),
---        ('2020-01-28',6,2),
---        ('2020-01-28',5,1),
---        ('2020-01-27',3,1),
---        ('2020-01-27',3,2);
+INSERT INTO menu (date,restaurant_id)
+VALUES ('2020-01-29',1),
+       ('2020-01-29',2),
+       ('2020-01-29',3),
+       ('2020-01-29',4),
+       ('2020-01-30',1),
+       ('2020-01-30',2),
+       ('2020-01-30',3),
+       ('2020-01-30',4);
+
+INSERT INTO menu_meal (menu_id, meal_id)
+VALUES (8,7),
+       (8,9),
+       (7,10),
+       (7,11),
+       (6,12),
+       (5,17),
+       (5,2);
+INSERT INTO vote (date_time, restaurant_id,user_id)
+VALUES ('2020-01-29',1,1),
+       ('2020-01-29',2,2),
+       ('2020-01-28',3,2),
+       ('2020-01-28',1,1),
+       ('2020-01-27',4,1),
+       ('2020-01-27',3,2);

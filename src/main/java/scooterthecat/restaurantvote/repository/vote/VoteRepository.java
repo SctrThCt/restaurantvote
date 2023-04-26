@@ -1,5 +1,6 @@
 package scooterthecat.restaurantvote.repository.vote;
 
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import scooterthecat.restaurantvote.model.Vote;
@@ -31,8 +32,8 @@ public class VoteRepository {
         return crudVoteRepository.findById(id).orElse(null);
     }
 
-    public List<Vote> getAll()
+    public List<Vote> getAll(int userId)
     {
-        return crudVoteRepository.findAll();
+        return crudVoteRepository.findAllByUserId(userId);
     }
 }

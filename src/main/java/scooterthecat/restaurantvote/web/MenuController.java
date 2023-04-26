@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping(value = MenuController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MenuController extends RootController {
 
-    static final String REST_URL = "/admin/menu";
+    static final String REST_URL = "/api/admin/menu";
 
     private final MenuService service;
 

@@ -18,6 +18,6 @@ public interface CrudRestaurantRepository extends JpaRepository<Restaurant,Integ
     int delete (@Param("id") int id);
 
     @Query("select r from Restaurant r order by r.id")
-    @EntityGraph(attributePaths = {"menu"})
+    @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)
     public List<Restaurant> getAllWithMenus();
 }
