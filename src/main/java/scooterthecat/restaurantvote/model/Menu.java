@@ -1,6 +1,9 @@
 package scooterthecat.restaurantvote.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,6 +13,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "menu",uniqueConstraints = {@UniqueConstraint(columnNames = {"date", "restaurant_id"}, name = "one_menu_for_restaurant_per_day")})
+@NoArgsConstructor
+@Getter
+@Setter
 public class Menu extends BaseEntity{
 
     @Column(name = "date", nullable = false)
@@ -26,30 +32,4 @@ public class Menu extends BaseEntity{
     @JoinColumn(name = "restaurant_id")
     @JsonBackReference
     private Restaurant restaurant;
-
-    public Menu(){}
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate localDate) {
-        this.date = date;
-    }
-
-    public Set<Meal> getMeals() {
-        return meals;
-    }
-
-    public void setMeals(Set<Meal> meals) {
-        this.meals = meals;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
 }

@@ -2,6 +2,9 @@ package scooterthecat.restaurantvote.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,6 +12,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "restaurant")
+@NoArgsConstructor
+@Getter
+@Setter
 public class Restaurant extends NamedEntity {
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
@@ -19,26 +25,8 @@ public class Restaurant extends NamedEntity {
     @OrderBy("dateTime DESC")
     private List<Vote> votes;
 
-    public Restaurant(){}
-
-    public Restaurant(Integer id, String name, List<Menu> menu)
-    {
+    public Restaurant(Integer id, String name, List<Menu> menu) {
         super(id, name);
         this.menu = menu;
-    }
-    public List<Menu> getMenu() {
-        return menu;
-    }
-
-    public void setMenu(List<Menu> menu) {
-        this.menu = menu;
-    }
-
-    public List<Vote> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(List<Vote> votes) {
-        this.votes = votes;
     }
 }

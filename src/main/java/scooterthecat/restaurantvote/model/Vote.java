@@ -3,6 +3,7 @@ package scooterthecat.restaurantvote.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,9 +12,10 @@ import java.time.LocalDateTime;
 
 
 @Entity
+@Table(name = "vote", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "uniq_vote_for_user_per_day")})
+@NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "vote", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "uniq_vote_for_user_per_day")})
 public class Vote extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -28,6 +30,4 @@ public class Vote extends BaseEntity{
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
-    
-    
 }
