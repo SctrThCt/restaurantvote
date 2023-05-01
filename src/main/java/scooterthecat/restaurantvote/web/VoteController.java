@@ -1,9 +1,7 @@
 package scooterthecat.restaurantvote.web;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import scooterthecat.restaurantvote.model.Vote;
 import scooterthecat.restaurantvote.service.VoteService;
 
@@ -18,7 +16,8 @@ public class VoteController extends RootController {
         this.service = service;
     }
 
-    public Vote get(int id) {
+    @GetMapping("api/profile/vote/{id}")
+    public Vote get(@PathVariable int id) {
         return service.get(id);
     }
 
@@ -30,12 +29,13 @@ public class VoteController extends RootController {
 //        return service.create(vote);
 //    }
 
-    public void update(Vote vote) {
-        service.update(vote);
+    @PatchMapping(value = "api/profile/vote/{voteId}")
+    public void update(@PathVariable int voteId, @RequestParam int restaurantId) {
+        service.update(voteId, restaurantId);
     }
+
     @PostMapping("/api/restaurant/{restaurantId}/vote")
-    public Vote voteForRestaurant(@PathVariable int restaurantId)
-    {
+    public Vote voteForRestaurant(@PathVariable int restaurantId) {
         return service.create(restaurantId);
     }
 

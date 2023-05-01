@@ -40,7 +40,7 @@ spring:
 logging:
   level:
     root: WARN
-    ru.javaops.topjava2: DEBUG
+    scooterthecat.restaurantvote: DEBUG
     org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: DEBUG
 
 server.servlet:
