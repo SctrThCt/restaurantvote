@@ -7,28 +7,24 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import scooterthecat.restaurantvote.SecurityUtil;
 import scooterthecat.restaurantvote.model.Vote;
-import scooterthecat.restaurantvote.repository.UserRepository;
 import scooterthecat.restaurantvote.repository.restaurant.RestaurantRepository;
 import scooterthecat.restaurantvote.repository.vote.VoteRepository;
 import scooterthecat.restaurantvote.util.TimeUtil;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-
-import static scooterthecat.restaurantvote.util.validation.ValidationUtil.assureIdConsistent;
 
 @Service
 public class VoteService {
 
     private final VoteRepository voteRepository;
     private final RestaurantRepository restaurantRepository;
-    private final UserRepository userRepository;
-    private Logger log = LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
-    public VoteService(VoteRepository voteRepository, RestaurantRepository restaurantRepository, UserRepository userRepository) {
+    public VoteService(VoteRepository voteRepository, RestaurantRepository restaurantRepository) {
         this.voteRepository = voteRepository;
         this.restaurantRepository = restaurantRepository;
-        this.userRepository = userRepository;
     }
 
     public Vote get(int id) {
@@ -41,14 +37,9 @@ public class VoteService {
 
     @Transactional
     public Vote create(int restaurantId) {
-
-        log.info("creating new vote");
         Vote newVote = new Vote();
-        log.info("setting restaurant {} to vote", restaurantId);
         newVote.setRestaurant(restaurantRepository.get(restaurantId));
-        log.info("setting user {} to vote");
         int userId = SecurityUtil.authId();
-        log.info("saving vote from user {} for restaurant {}", userId, restaurantId);
         voteRepository.save(newVote, userId);
         return newVote;
     }
@@ -59,15 +50,11 @@ public class VoteService {
         Vote oldVote = get(voteId);
         Assert.notNull(oldVote, "vote must not be null");
         oldVote.setRestaurant(restaurantRepository.get(restaurantId));
-        oldVote.setDateTime(LocalDateTime.now());
+        oldVote.setDate(LocalDate.from(LocalDateTime.now()));
         voteRepository.save(oldVote, userId);
     }
 
     public List<Vote> getAll() {
         return voteRepository.getAll(SecurityUtil.authId());
-    }
-
-    public void createOrUpdate(int restaurantId, int userId) {
-
     }
 }

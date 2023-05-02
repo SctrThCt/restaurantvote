@@ -2,7 +2,7 @@ package scooterthecat.restaurantvote.web;
 
 import org.junit.jupiter.api.Test;
 
-class MenuControllerTest {
+class MenuControllerTest extends AbstractControllerTest{
 
     @Test
     void get() {

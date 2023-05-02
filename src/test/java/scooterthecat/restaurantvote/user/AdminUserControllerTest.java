@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import scooterthecat.restaurantvote.model.Role;
 import scooterthecat.restaurantvote.model.User;
 import scooterthecat.restaurantvote.repository.UserRepository;
-import ru.javaops.topjava2.web.AbstractControllerTest;
+import scooterthecat.restaurantvote.web.AbstractControllerTest;
 import scooterthecat.restaurantvote.GlobalExceptionHandler;
 
 import static org.hamcrest.Matchers.containsString;

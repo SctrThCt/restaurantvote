@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -24,9 +26,10 @@ public class Vote extends BaseEntity{
     private Restaurant restaurant;
 
     @Column(name = "date_time", nullable = false, columnDefinition = "timestamp default now()", updatable = true)
-    private LocalDateTime dateTime = LocalDateTime.now();
+    private LocalDate date = LocalDate.from(LocalDateTime.now());
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;

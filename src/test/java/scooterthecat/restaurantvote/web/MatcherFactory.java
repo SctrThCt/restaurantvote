@@ -1,4 +1,4 @@
-package ru.javaops.topjava2.web;
+package scooterthecat.restaurantvote.web;
 
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;

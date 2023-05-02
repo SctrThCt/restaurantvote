@@ -3,7 +3,7 @@ package scooterthecat.restaurantvote.user;
 import scooterthecat.restaurantvote.model.Role;
 import scooterthecat.restaurantvote.model.User;
 import scooterthecat.restaurantvote.util.JsonUtil;
-import ru.javaops.topjava2.web.MatcherFactory;
+import scooterthecat.restaurantvote.web.MatcherFactory;
 
 import java.util.Collections;
 import java.util.Date;

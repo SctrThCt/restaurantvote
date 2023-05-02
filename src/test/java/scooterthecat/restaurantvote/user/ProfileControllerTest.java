@@ -11,7 +11,7 @@ import scooterthecat.restaurantvote.repository.UserRepository;
 import scooterthecat.restaurantvote.to.UserTo;
 import scooterthecat.restaurantvote.util.JsonUtil;
 import scooterthecat.restaurantvote.util.UserUtil;
-import ru.javaops.topjava2.web.AbstractControllerTest;
+import scooterthecat.restaurantvote.web.AbstractControllerTest;
 import scooterthecat.restaurantvote.GlobalExceptionHandler;
 
 import static org.hamcrest.Matchers.containsString;
