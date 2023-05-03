@@ -22,7 +22,7 @@ public class Vote extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
-    @JsonManagedReference
+    @JsonBackReference
     private Restaurant restaurant;
 
     @Column(name = "date_time", nullable = false, columnDefinition = "timestamp default now()", updatable = true)
@@ -33,4 +33,7 @@ public class Vote extends BaseEntity{
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
+
+    @Column(name = "restaurant_id", insertable = false, updatable = false)
+    private Long restaurantId;
 }

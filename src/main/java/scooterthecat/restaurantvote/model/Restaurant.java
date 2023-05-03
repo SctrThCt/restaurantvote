@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Restaurant extends NamedEntity {
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     @OrderBy("date DESC")
     private List<Menu> menu;

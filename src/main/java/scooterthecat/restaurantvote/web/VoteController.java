@@ -29,7 +29,7 @@ public class VoteController extends RootController {
 //        return service.create(vote);
 //    }
 
-    @PatchMapping(value = "api/profile/vote/{voteId}")
+    @PatchMapping(value = "api/profile/votes/{voteId}")
     public void update(@PathVariable int voteId, @RequestParam int restaurantId) {
         service.update(voteId, restaurantId);
     }
