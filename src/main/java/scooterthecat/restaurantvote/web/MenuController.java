@@ -1,5 +1,6 @@
 package scooterthecat.restaurantvote.web;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import scooterthecat.restaurantvote.model.Menu;
@@ -26,12 +27,13 @@ public class MenuController extends RootController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
         service.delete(id);
     }
 
-    @PostMapping
-    public Menu create(@RequestParam Menu menu) {
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Menu create(@RequestBody Menu menu) {
         return service.create(menu);
     }
 
@@ -45,14 +47,20 @@ public class MenuController extends RootController {
         return service.getAll();
     }
 
-    @PostMapping("/{id}/meal")
+    @PostMapping("/{id}/add-meal")
     public void addMealToMenu(@PathVariable int id, @RequestParam int mealId) {
         service.addMealToMenu(id, mealId);
     }
 
-    @DeleteMapping("/{id}/meal")
+    @DeleteMapping("/{id}/remove-meal")
     public void removeMealFromMenu(@PathVariable int id,@RequestParam int mealId)
     {
         service.removeMealFromMenu(id, mealId);
+    }
+
+    @PostMapping("/{menuId}/add-restaurant")
+    public void addMenuToRestaurant(@PathVariable int menuId, @RequestParam int id)
+    {
+        service.addMenuToRestaurant(menuId,id);
     }
 }

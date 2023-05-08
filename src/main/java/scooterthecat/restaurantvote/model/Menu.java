@@ -21,7 +21,7 @@ public class Menu extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
-    @JsonBackReference
+    @JsonBackReference(value = "menu_restaurant")
     private Restaurant restaurant;
 
     @Column(name = "date", nullable = false)
@@ -29,8 +29,8 @@ public class Menu extends BaseEntity {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "menu_meal",
-            joinColumns = @JoinColumn(name = "menu_id"),
-            inverseJoinColumns = @JoinColumn(name = "meal_id"),
-            uniqueConstraints = {@UniqueConstraint(columnNames = {"menu_id", "meal_id"}, name = "unique_meal_for_menu")})
+            joinColumns = {@JoinColumn(name = "menu_id")},
+            inverseJoinColumns = {@JoinColumn(name = "meal_id")}/*,
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"menu_id", "meal_id"}, name = "uniq_meal_for_menu")}*/)
     private Set<Meal> meals;
 }

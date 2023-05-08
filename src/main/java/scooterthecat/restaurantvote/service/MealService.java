@@ -1,44 +1,42 @@
 package scooterthecat.restaurantvote.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import scooterthecat.restaurantvote.model.Meal;
-import scooterthecat.restaurantvote.repository.meal.MealRepository;
+import scooterthecat.restaurantvote.repository.MealRepository;
 
 import java.util.List;
 
+import static scooterthecat.restaurantvote.repository.RepositoryUtil.checkNotFound;
+
 @Service
-@Transactional(readOnly = true)
+@AllArgsConstructor
 public class MealService {
 
-    private final MealRepository repository;
-
-    public MealService(MealRepository repository) {
-        this.repository = repository;
-    }
+    private final MealRepository mealRepository;
 
     public Meal get(int id) {
-        return repository.get(id);
+        return checkNotFound(mealRepository, id, Meal.class);
     }
-
     public void delete(int id) {
-        repository.delete(id);
+        mealRepository.deleteExisted(id);
     }
 
     @Transactional
     public Meal create(Meal meal) {
         Assert.notNull(meal, "meal must not be null");
-        return repository.save(meal);
+        return mealRepository.save(meal);
     }
 
     @Transactional
     public void update(Meal meal, int id) {
         Assert.notNull(meal, "meal must not be null");
-        repository.save(meal);
+        mealRepository.save(meal);
     }
 
     public List<Meal> getAll() {
-        return repository.getAll();
+        return mealRepository.findAll();
     }
 }

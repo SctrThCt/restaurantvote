@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name = "vote", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "uniq_vote_for_user_per_day")})
+@Table(name = "vote", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "one_vote_for_user_per_day")})
 @NoArgsConstructor
 @Getter
 @Setter
@@ -31,7 +31,7 @@ public class Vote extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonBackReference(value = "vote_user")
     private User user;
 
     @Column(name = "restaurant_id", insertable = false, updatable = false)

@@ -16,18 +16,15 @@ public class VoteController extends RootController {
         this.service = service;
     }
 
-    @GetMapping("api/profile/vote/{id}")
+    @GetMapping("api/profile/votes/{id}")
     public Vote get(@PathVariable int id) {
         return service.get(id);
     }
 
-    public void delete(int id, int userId) {
-        service.delete(id, userId);
+    @DeleteMapping("api/profile/votes/{id}")
+    public void delete(@PathVariable int id) {
+        service.delete(id);
     }
-
-//    public Vote create(Vote vote) {
-//        return service.create(vote);
-//    }
 
     @PatchMapping(value = "api/profile/votes/{voteId}")
     public void update(@PathVariable int voteId, @RequestParam int restaurantId) {

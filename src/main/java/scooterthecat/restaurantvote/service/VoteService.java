@@ -1,60 +1,63 @@
 package scooterthecat.restaurantvote.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import scooterthecat.restaurantvote.SecurityUtil;
+import scooterthecat.restaurantvote.model.Restaurant;
+import scooterthecat.restaurantvote.model.User;
 import scooterthecat.restaurantvote.model.Vote;
-import scooterthecat.restaurantvote.repository.restaurant.RestaurantRepository;
-import scooterthecat.restaurantvote.repository.vote.VoteRepository;
+import scooterthecat.restaurantvote.repository.UserRepository;
+import scooterthecat.restaurantvote.repository.RestaurantRepository;
+import scooterthecat.restaurantvote.repository.VoteRepository;
 import scooterthecat.restaurantvote.util.TimeUtil;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
+
+import static scooterthecat.restaurantvote.repository.RepositoryUtil.checkNotFound;
 
 @Service
+@AllArgsConstructor
 public class VoteService {
-
     private final VoteRepository voteRepository;
     private final RestaurantRepository restaurantRepository;
-    private final Logger log = LoggerFactory.getLogger(getClass());
-
-    public VoteService(VoteRepository voteRepository, RestaurantRepository restaurantRepository) {
-        this.voteRepository = voteRepository;
-        this.restaurantRepository = restaurantRepository;
-    }
+    private final UserRepository userRepository;
 
     public Vote get(int id) {
-        return voteRepository.get(id, SecurityUtil.authId());
+        int userId = SecurityUtil.authId();
+        return voteRepository.findByIdAndUserId(id,userId).orElseThrow(
+                ()->new NoSuchElementException("Vote for userId "+userId+" with id "+id+" not found"));
     }
 
-    public void delete(int id, int userId) {
-        voteRepository.delete(id, userId);
+    public void delete(int id) {
+        voteRepository.deleteExisted(id,SecurityUtil.authId());
     }
 
     @Transactional
     public Vote create(int restaurantId) {
-        Vote newVote = new Vote();
-        newVote.setRestaurant(restaurantRepository.get(restaurantId));
+        Vote vote = new Vote();
+        Restaurant restaurant = checkNotFound(restaurantRepository, restaurantId, Restaurant.class);
+        vote.setRestaurant(restaurant);
         int userId = SecurityUtil.authId();
-        voteRepository.save(newVote, userId);
-        return newVote;
+        vote.setUser(checkNotFound(userRepository,userId, User.class));
+        return voteRepository.save(vote);
     }
 
+    @Transactional
     public void update(int voteId, int restaurantId) {
         TimeUtil.checkTime();
-        int userId = SecurityUtil.authId();
-        Vote oldVote = get(voteId);
-        Assert.notNull(oldVote, "vote must not be null");
-        oldVote.setRestaurant(restaurantRepository.get(restaurantId));
-        oldVote.setDate(LocalDate.from(LocalDateTime.now()));
-        voteRepository.save(oldVote, userId);
+        Vote vote = get(voteId);
+        Assert.notNull(vote, "vote must not be null");
+        vote.setRestaurant(checkNotFound(restaurantRepository, restaurantId, Restaurant.class));
+        vote.setDate(LocalDate.from(LocalDateTime.now()));
+        voteRepository.save(vote);
     }
 
     public List<Vote> getAll() {
-        return voteRepository.getAll(SecurityUtil.authId());
+        return voteRepository.findAllByUserId(SecurityUtil.authId());
     }
 }

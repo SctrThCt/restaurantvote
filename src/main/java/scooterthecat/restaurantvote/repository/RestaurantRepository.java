@@ -1,21 +1,15 @@
-package scooterthecat.restaurantvote.repository.restaurant;
+package scooterthecat.restaurantvote.repository;
 
 import org.springframework.data.jpa.repository.EntityGraph;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import scooterthecat.restaurantvote.model.Restaurant;
+import scooterthecat.restaurantvote.repository.BaseRepository;
 
 import java.util.List;
 
 @Transactional(readOnly = true)
-public interface CrudRestaurantRepository extends JpaRepository<Restaurant,Integer> {
-
-    @Modifying
-    @Query("delete from Restaurant r where r.id=:id")
-    int delete (@Param("id") int id);
+public interface RestaurantRepository extends BaseRepository<Restaurant> {
 
     @Query("select r from Restaurant r order by r.id")
     @EntityGraph(attributePaths = {"menu"}, type = EntityGraph.EntityGraphType.LOAD)

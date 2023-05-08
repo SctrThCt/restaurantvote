@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @UtilityClass
-public class JsonUtil {
+public class    JsonUtil {
     private static ObjectMapper mapper;
 
     public static void setMapper(ObjectMapper mapper) {

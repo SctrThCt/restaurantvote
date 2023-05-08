@@ -46,12 +46,6 @@ public class RestaurantController extends RootController {
         return service.getAll();
     }
 
-    @PostMapping(ADMIN_URL+"/{id}/menu")
-    public void addMenuToRestaurant(@PathVariable int id, @RequestParam int menuId)
-    {
-        service.addMenuToRestaurant(id,menuId);
-    }
-
     @GetMapping(REST_URL)
     public List<RestaurantTo> getRestaurantsForVote()
     {

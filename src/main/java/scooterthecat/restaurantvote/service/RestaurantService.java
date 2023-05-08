@@ -1,36 +1,30 @@
 package scooterthecat.restaurantvote.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import scooterthecat.restaurantvote.model.Menu;
 import scooterthecat.restaurantvote.model.Restaurant;
-import scooterthecat.restaurantvote.repository.menu.MenuRepository;
-import scooterthecat.restaurantvote.repository.restaurant.RestaurantRepository;
+import scooterthecat.restaurantvote.repository.RestaurantRepository;
 import scooterthecat.restaurantvote.to.RestaurantTo;
 import scooterthecat.restaurantvote.util.RestaurantUtil;
 
 import java.util.List;
 
+import static scooterthecat.restaurantvote.repository.RepositoryUtil.checkNotFound;
+
 @Service
+@AllArgsConstructor
 public class RestaurantService {
-
     private final RestaurantRepository restaurantRepository;
-    private final MenuRepository menuRepository;
-
-    public RestaurantService(RestaurantRepository restaurantRepository, MenuRepository menuRepository) {
-        this.restaurantRepository = restaurantRepository;
-        this.menuRepository = menuRepository;
-    }
-
 
     public Restaurant get(int id) {
-        return restaurantRepository.get(id);
+        return checkNotFound(restaurantRepository, id, Restaurant.class);
     }
 
     @Transactional
     public void delete(int id) {
-        restaurantRepository.delete(id);
+        restaurantRepository.deleteExisted(id);
     }
 
     @Transactional
@@ -46,21 +40,7 @@ public class RestaurantService {
     }
 
     public List<Restaurant> getAll() {
-        return restaurantRepository.getAll();
-    }
-
-    @Transactional
-    public void addMenuToRestaurant(int id, int menuId) {
-        Restaurant restaurant = restaurantRepository.get(id);
-        Menu menu = menuRepository.get(menuId);
-        restaurant.getMenu().add(menu);
-    }
-
-    @Transactional
-    public void removeMenuFromRestaurant(int id, int menuId) {
-        Restaurant restaurant = restaurantRepository.get(id);
-        Menu menu = menuRepository.get(menuId);
-        restaurant.getMenu().remove(menu);
+        return restaurantRepository.findAll();
     }
 
     public List<RestaurantTo> getAllRestaurantsForVote() {
